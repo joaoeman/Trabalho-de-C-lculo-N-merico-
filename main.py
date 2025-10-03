@@ -2,6 +2,7 @@ import sympy as sp
 import metodos.bisseccao
 import metodos.falsaPosicao
 import metodos.secante
+import metodos.newton
 import testarMetodos
 
 # Define a variável simbólica
@@ -45,7 +46,6 @@ def main():
     print("=" * 50)
     
     testarMetodos.tests(a, b, x0, x1, func, precisao, iteracoes)
-
 
 if __name__ == "__main__":
     main()
