@@ -231,7 +231,7 @@ Todos os métodos param quando:
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Python 3.x:** Linguagem de programação
+- **Python 3.8:** Linguagem de programação
 - **SymPy:** Biblioteca para matemática simbólica
 - **time:** Medição de tempo de execução
 
