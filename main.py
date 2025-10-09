@@ -6,44 +6,23 @@ import metodos.newton
 import testarMetodos
 import os
 
-# Define a variável simbólica
 x = sp.Symbol('x')
 
 def ler_arquivo(nome_arquivo):
-    """
-    Lê os parâmetros de um arquivo de entrada.
-    
-    Formato esperado do arquivo:
-    - Linha 1: Função em x (ex: x**2 - 4)
-    - Linha 2: Início do intervalo [a]
-    - Linha 3: Fim do intervalo [b]
-    - Linha 4: Primeira estimativa inicial [x0]
-    - Linha 5: Segunda estimativa inicial [x1]
-    - Linha 6: Precisão desejada (ex: 0.000001)
-    - Linha 7: Máximo de iterações (ex: 100)
-    
-    Args:
-        nome_arquivo (str): Caminho do arquivo de entrada
-        
-    Returns:
-        tuple: (func, a, b, x0, x1, precisao, iteracoes) ou None se erro
-    """
+  
     try:
         with open(nome_arquivo, 'r') as file:
             linhas = file.readlines()
             
-            # Remover espaços em branco e quebras de linha
             linhas = [linha.strip() for linha in linhas if linha.strip()]
             
             if len(linhas) < 7:
                 print(f"[ERRO] O arquivo deve conter 7 linhas de parametros")
                 return None
             
-            # Processar função
             func_str = linhas[0]
             func = sp.sympify(func_str)
             
-            # Processar parâmetros numéricos
             a = float(linhas[1])
             b = float(linhas[2])
             x0 = float(linhas[3])
@@ -61,24 +40,16 @@ def ler_arquivo(nome_arquivo):
         return None
 
 def entrada_manual():
-    """
-    Solicita entrada manual dos parâmetros pelo usuário.
     
-    Returns:
-        tuple: (func, a, b, x0, x1, precisao, iteracoes) ou None se erro
-    """
     print("\nENTRADA MANUAL DE DADOS")
     print("-" * 50)
     
-    # Recebe a função como string
     func_str = input("Digite a função em x: ")
     
     try:
-        # Converte a string em expressão simbólica
         func = sp.sympify(func_str)
         print(f"[OK] Funcao: {func}")
         
-        # Calcula a derivada
         derivada = sp.diff(func, x)
         print(f"[OK] Derivada: {derivada}")
         
@@ -86,7 +57,6 @@ def entrada_manual():
         print(f"[ERRO] ao processar a funcao: {e}")
         return None
     
-    # Parâmetros para métodos de intervalo
     try:
         a = float(input("Digite o início do intervalo [a,b]: "))
         b = float(input("Digite o fim do intervalo [a,b]: "))
@@ -102,18 +72,7 @@ def entrada_manual():
         return None
 
 def executar_simulacao(func, a, b, x0, x1, precisao, iteracoes):
-    """
-    Executa a simulação dos métodos numéricos com os parâmetros fornecidos.
-    
-    Args:
-        func: Função simbólica
-        a: Início do intervalo
-        b: Fim do intervalo
-        x0: Primeira estimativa inicial
-        x1: Segunda estimativa inicial
-        precisao: Precisão desejada
-        iteracoes: Máximo de iterações
-    """
+
     print("\n" + "=" * 100)
     print("                        SIMULACAO DE METODOS NUMERICOS - ZEROS DE FUNCOES")
     print("=" * 100)
@@ -127,9 +86,7 @@ def executar_simulacao(func, a, b, x0, x1, precisao, iteracoes):
     testarMetodos.tests(a, b, x0, x1, func, precisao, iteracoes)
 
 def menu_principal():
-    """
-    Exibe o menu principal e controla o fluxo do programa.
-    """
+    
     while True:
         print("\n" + "=" * 100)
         print("                    SIMULADOR DE METODOS NUMERICOS - ZEROS DE FUNCOES")
@@ -151,27 +108,23 @@ def menu_principal():
                 break
                 
             elif opcao == '1':
-                # Entrada manual
                 resultado = entrada_manual()
                 if resultado:
                     executar_simulacao(*resultado)
                     
             elif opcao == '2':
-                # Ler de input.txt
                 print("\nLendo dados de 'input.txt'...")
                 resultado = ler_arquivo('input.txt')
                 if resultado:
                     executar_simulacao(*resultado)
                     
             elif opcao == '3':
-                # Ler de input2.txt
                 print("\nLendo dados de 'input2.txt'...")
                 resultado = ler_arquivo('input2.txt')
                 if resultado:
                     executar_simulacao(*resultado)
                     
             elif opcao == '4':
-                # Ler de arquivo personalizado
                 nome_arquivo = input("\nDigite o nome do arquivo: ").strip()
                 print(f"Lendo dados de '{nome_arquivo}'...")
                 resultado = ler_arquivo(nome_arquivo)
@@ -179,7 +132,6 @@ def menu_principal():
                     executar_simulacao(*resultado)
                     
             elif opcao == '5':
-                # Exemplos de problemas de engenharia
                 menu_exemplos()
                 
             else:
@@ -192,9 +144,7 @@ def menu_principal():
             print(f"\n[ERRO] Erro inesperado: {e}")
 
 def menu_exemplos():
-    """
-    Exibe o menu de exemplos de problemas de engenharia.
-    """
+
     print("\n" + "=" * 100)
     print("                           EXEMPLOS DE PROBLEMAS DE ENGENHARIA")
     print("=" * 100)
@@ -242,9 +192,6 @@ def menu_exemplos():
             executar_simulacao(*resultado)
 
 def main():
-    """
-    Função principal do programa.
-    """
     menu_principal()
 
 if __name__ == "__main__":
