@@ -237,33 +237,14 @@ Todos os métodos param quando:
 
 ---
 
-## 📚 Documentação do Código
-
-Todos os módulos e funções possuem:
-- Docstrings completas
-- Descrição de parâmetros e retornos
-- Exemplos de uso
-- Comentários explicativos do algoritmo
-
----
-
 ## 🎓 Equipe
 
-[Adicione aqui os nomes dos integrantes da equipe e suas contribuições]
+- David Rios Santana
+- Guilherme Emetério Santos Lima
+- João Emanuel Santos Do Nascimento
 
 ---
 
 ## 📄 Licença
 
 Este projeto foi desenvolvido para fins educacionais como parte da disciplina de Cálculo Numérico.
-
----
-
-## 📞 Contato
-
-Para dúvidas ou sugestões, entre em contato com a equipe através do Mural da Disciplina no Amadeus.
-
----
-
-**Data de Entrega:** 17/10/2025  
-**Apresentação:** 07 e 09/10/2025
